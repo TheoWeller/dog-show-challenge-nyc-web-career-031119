@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+let name = "";
+let breed = "";
+let sex = "";
+let dogId = 0;
+
   //Edit addEventListener
   table.addEventListener("click", function(e) {
     if(e.target.className === "edit-btn") {
@@ -35,6 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("dog-form").childNodes[5].value = currentSex
 
     }
+      name = document.getElementById("dog-form").childNodes[1].value
+      breed = document.getElementById("dog-form").childNodes[3].value
+      sex = document.getElementById("dog-form").childNodes[5].value
+      dogId = e.target.parentNode.parentNode.id
+
+      console.log(name);
   })
 
   // console.log("poop");
@@ -64,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch("http://localhost:3000/dogs")
                 .then(resp => resp.json())
                 .then(renderEachDoggo);
-
               }).catch(errors => console.log(errors))
 
           })
